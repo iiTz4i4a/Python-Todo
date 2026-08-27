@@ -257,12 +257,10 @@ Repository отвечает только за сохранение и получ
 * форматирование.
 
 ---
-<!-- TODO: Начало -->
 # 🚀 5. Этап 0 — Подготовка проекта
 Создать директорию:
 
 ```bash
-mkdir todo-cli
 cd todo-cli
 ```
 
@@ -313,7 +311,7 @@ pip freeze > requirements.txt
 Добавить:
 
 ```text
-.venv/
+venv/
 __pycache__/
 .pytest_cache/
 *.pyc
@@ -402,7 +400,6 @@ app/services/todo_service.py
 ```
 
 ---
-
 ## Реализовать
 
 ### Добавление
@@ -417,7 +414,6 @@ add_task()
 get_task()
 get_all_tasks()
 ```
-
 ### Удаление
 
 ```text
@@ -455,7 +451,7 @@ complete_task()
 * [ ] Можно изменить статус
 
 ---
-
+<!-- TODO: TodoService подключить к SQLite -->
 # 💾 8. Этап 3 — SQLite
 
 ## Цель
