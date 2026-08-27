@@ -1,6 +1,3 @@
-
-import re
-
 from app.models.task import Task
 
 class TodoService:
