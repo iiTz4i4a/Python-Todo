@@ -27,7 +27,10 @@ class SQLiteDatabase:
         self.commit()
 
     def get_task(self, task_id):
-        pass
+        self.cursor.execute(
+            """SELECT * FROM tasks WHERE id=(?)""",
+            (task_id,)
+        return self.cursor.fetchone()
 
     def get_all_tasks(self):
         pass
