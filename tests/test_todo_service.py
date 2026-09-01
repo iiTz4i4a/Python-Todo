@@ -1,4 +1,4 @@
-from app.services.todo_service import TodoService, service, task
+from app.services.todo_service import TodoService
 
 
 def test_add_task():
