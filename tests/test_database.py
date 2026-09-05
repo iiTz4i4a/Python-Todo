@@ -1,10 +1,6 @@
-import sqlite3
-from unittest import result
+from datetime import datetime
 
-from app.database.sqlite import SQLiteDatabase
-from app.models import task
 from app.models.task import Task
-from tests.conftest import db
 
 def test_create_table(db):
     db.create_table()
@@ -175,7 +171,16 @@ def test_update_task_not_found(db):
     assert result[0][0] == 1
     assert result[0][1] == "OLD Title"
     assert result[0][2] == "OLD Description"
-    assert result[0][3] is False
+    assert result[0][3] == False
  
+def test_task_from_row():
+    row = (1, "First", "Comment", 0, "2026-09-03T12:34:56.789012")
+    result = Task.from_row(row)
 
+    assert result.id == 1
+    assert result.title == "First"
+    assert result.description == "Comment"
+    assert result.completed is False
+    assert result.created_at == datetime.fromisoformat("2026-09-03T12:34:56.789012")
+    assert isinstance(datetime(2026, 9, 3, 12, 34, 56, 789012),datetime)
 

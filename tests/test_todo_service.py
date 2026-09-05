@@ -1,8 +1,8 @@
 from app.services.todo_service import TodoService
 
 
-def test_add_task():
-    service = TodoService()
+def test_add_task(db):
+    service = TodoService(db)
     task = service.add_task("Test Creating The Task", "Test Creating The Description")
 
     assert task.id == 1
@@ -11,8 +11,8 @@ def test_add_task():
     assert task.completed is False
 
 
-def test_get_task():
-    service = TodoService()
+def test_get_task(db):
+    service = TodoService(db)
 
     service.add_task("Test Creating The Task", "Test Creating The Description")
 
@@ -24,8 +24,8 @@ def test_get_task():
     assert task.completed is False
 
 
-def test_get_all_tasks():
-    service = TodoService()
+def test_get_all_tasks(db):
+    service = TodoService(db)
     service.add_task("Creating First Task", "First Description")
     service.add_task("Creating Second Task", "Second Description")
     service.add_task("Creating Third Task", "Third Description")
@@ -47,8 +47,8 @@ def test_get_all_tasks():
     assert tasks[4].description == "Fifth Description"
 
 
-def test_delete_task():
-    service = TodoService()
+def test_delete_task(db):
+    service = TodoService(db)
     service.add_task("Creating First Task", "First Description")
 
     task = service.delete_task(1)
@@ -60,8 +60,8 @@ def test_delete_task():
     assert task.description == "First Description"
 
 
-def test_rename_task():
-    service = TodoService()
+def test_rename_task(db):
+    service = TodoService(db)
     service.add_task("Creating First Task", "First Description")
     service.rename_task(1, "Renamed Title")
 
@@ -72,8 +72,8 @@ def test_rename_task():
     assert task.id == 1
 
 
-def test_update_description_task():
-    service = TodoService()
+def test_update_description_task(db):
+    service = TodoService(db)
     service.add_task("Creating First Task", "First Description")
     service.update_description(1, "Renamed Description")
 
@@ -84,8 +84,8 @@ def test_update_description_task():
     assert task.id == 1
 
 
-def test_complete_task():
-    service = TodoService()
+def test_complete_task(db):
+    service = TodoService(db)
     service.add_task("Creating First Task", "First Description")
     service.complete_task(1)
 
